@@ -14,3 +14,10 @@ after_success:
   - docker build -t coffmanjrp/fibonacci-calculator-nginx ./nginx
   - docker build -t coffmanjrp/fibonacci-calculator-server ./server
   - docker build -t coffmanjrp/fibonacci-calculator-worker ./worker
+  # Login to Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take the images and push them to Docker Hub
+  - docker push coffmanjrp/fibonacci-calculator-client
+  - docker push coffmanjrp/fibonacci-calculator-nginx
+  - docker push coffmanjrp/fibonacci-calculator-server
+  - docker push coffmanjrp/fibonacci-calculator-worker
