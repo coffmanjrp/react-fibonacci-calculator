@@ -1,0 +1,16 @@
+sudo: required
+language: generic
+servies:
+  - docker
+
+before_install:
+  - docker build -t coffmanjrp/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true coffmanjrp/react-test npm test
+
+after_success:
+  - docker build -t coffmanjrp/fibonacci-calculator-client ./client
+  - docker build -t coffmanjrp/fibonacci-calculator-nginx ./nginx
+  - docker build -t coffmanjrp/fibonacci-calculator-server ./server
+  - docker build -t coffmanjrp/fibonacci-calculator-worker ./worker
