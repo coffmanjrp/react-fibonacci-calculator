@@ -21,3 +21,15 @@ after_success:
   - docker push coffmanjrp/fibonacci-calculator-nginx
   - docker push coffmanjrp/fibonacci-calculator-server
   - docker push coffmanjrp/fibonacci-calculator-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-west-1'
+  app: 'fibonacci-calculator'
+  env: 'Fibonaccicalculator-env'
+  bucket_name: ''
+  bucket_path: ''
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
