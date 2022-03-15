@@ -27,8 +27,8 @@ deploy:
   region: 'us-west-1'
   app: 'fibonacci-calculator'
   env: 'Fibonaccicalculator-env'
-  bucket_name: ''
-  bucket_path: ''
+  bucket_name: 'elasticbeanstalk-us-west-1-581644771103'
+  bucket_path: 'fibonacci-calculator'
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
